@@ -1,3 +1,5 @@
+@Library('my-shared-library') _
+
 pipeline {
     agent any
 
@@ -6,6 +8,15 @@ pipeline {
             steps {
                 sh 'echo "Building..."'
             }
+        }
+        stage('My stage') {
+          steps {
+              script {
+                  def myVar = com.mycompany.utils.MyUtils.doSomething()
+                  echo "My variable: ${myVar}"
+                  myCustomStep()
+              }
+          }
         }
         stage('Test') {
             steps {
