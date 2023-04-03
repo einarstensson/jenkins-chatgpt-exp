@@ -1,4 +1,4 @@
-@Library('my-shared-library') _
+@Library('jenkins-chatgpt-shared-library-exp') _
 
 pipeline {
     agent any
