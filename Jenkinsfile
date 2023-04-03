@@ -18,6 +18,14 @@ pipeline {
               }
           }
         }
+        stage('Run Python script') {
+            steps {
+                withEnv(['MY_ENV_VAR=${MY_ENV_VAR}']) {
+                    sh 'pip install requirements.txt'
+                    sh 'python3 scripts/s3_bucket_ls.py'
+                }
+            }
+        }
         stage('Test') {
             steps {
                 sh 'echo "Testing..."'
